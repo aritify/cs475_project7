@@ -62,8 +62,8 @@ main( int argc, char *argv[ ] )
 
 	int  me;		// which one I am
 
-	MPI_Comm_size( MPI_COMM_WORLD, ????? );
-	MPI_Comm_rank( MPI_COMM_WORLD, ????? );
+	MPI_Comm_size( MPI_COMM_WORLD, &NumCpus );
+	MPI_Comm_rank( MPI_COMM_WORLD, &me );
 
 	// decide how much data to send to each processor:
 
