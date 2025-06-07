@@ -144,7 +144,7 @@ main( int argc, char *argv[ ] )
 	else
 	{
 		// have everyone else receive from the THEBOSS:
-		MPI_Recv( PPSignal, ?????, ?????, ?????, ?????, MPI_COMM_WORLD, &status );
+		MPI_Recv( PPSignal, PPSize, MPI_FLOAT, THEBOSS, 0, MPI_COMM_WORLD, &status );
 	}
 
 	// each processor does its own fourier:
