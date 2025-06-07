@@ -138,7 +138,7 @@ main( int argc, char *argv[ ] )
 		for( int dst = 0; dst < NumCpus; dst++ )
 		{
 			if( dst != THEBOSS )
-				MPI_Send( &BigSignal[dst*PPSize], ?????, ?????, ?????, ?????, MPI_COMM_WORLD );
+				MPI_Send( &BigSignal[dst*PPSize], PPSize, MPI_FLOAT, dst, 0, MPI_COMM_WORLD );
 		}
 	}
 	else
