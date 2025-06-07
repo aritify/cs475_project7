@@ -139,12 +139,18 @@ main( int argc, char *argv[ ] )
 		{
 			if( dst != THEBOSS )
 				MPI_Send( &BigSignal[dst*PPSize], PPSize, MPI_FLOAT, dst, 0, MPI_COMM_WORLD );
+				// MPI_Send( addr of data to send, # of elems, type, sending CPU rank (src, dst),
+				// int or char used to differentiate this transmission from any other transmission, 
+				// subset of CPUs you want invloved (MPI_COMM_WORLD == all cpus, don't subset)
 		}
 	}
 	else
 	{
 		// have everyone else receive from the THEBOSS:
 		MPI_Recv( PPSignal, PPSize, MPI_FLOAT, THEBOSS, 0, MPI_COMM_WORLD, &status );
+		// MPI_Recv( addr of data to receive into, # elems we can recv at most, type,
+		// rank of cpu we expect to get a transmission from, int/char to differentiate what transmission
+		// we're looking for from sender, CPU subset, type = MPI_Status
 	}
 
 	// each processor does its own fourier:
