@@ -139,7 +139,7 @@ main( int argc, char *argv[ ] )
 		{
 			if( dst != THEBOSS )
 				MPI_Send( &BigSignal[dst*PPSize], PPSize, MPI_FLOAT, dst, 0, MPI_COMM_WORLD );
-				// MPI_Send( addr of data to send, # of elems, type, sending CPU rank (src, dst),
+				// MPI_Send( addr of data to send, # of elems, type, rank of CPU we're sending to,
 				// int or char used to differentiate this transmission from any other transmission, 
 				// subset of CPUs you want invloved (MPI_COMM_WORLD == all cpus, don't subset)
 		}
