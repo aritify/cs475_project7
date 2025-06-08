@@ -137,7 +137,7 @@ main( int argc, char *argv[ ] )
 		// have the THEBOSS send to everyone else:
 		for( int dst = 0; dst < NumCpus; dst++ )
 		{
-			if( dst != THEBOSS )
+			if( dst != THEBOSS ) // If the boss, send
 				MPI_Send( &BigSignal[dst*PPSize], PPSize, MPI_FLOAT, dst, 0, MPI_COMM_WORLD );
 				// MPI_Send( addr of data to send, # of elems, type, rank of CPU we're sending to,
 				// int or char used to differentiate this transmission from any other transmission, 
@@ -147,7 +147,7 @@ main( int argc, char *argv[ ] )
 	else
 	{
 		// have everyone else receive from the THEBOSS:
-		MPI_Recv( PPSignal, PPSize, MPI_FLOAT, THEBOSS, 0, MPI_COMM_WORLD, &status );
+		MPI_Recv( PPSignal, PPSize, MPI_FLOAT, THEBOSS, 0, MPI_COMM_WORLD, &status ); // receive if not the boss
 		// MPI_Recv( addr of data to receive into, # elems we can recv at most, type,
 		// rank of cpu we expect to get a transmission from, int/char to differentiate what transmission
 		// we're looking for from sender, CPU subset, type = MPI_Status
