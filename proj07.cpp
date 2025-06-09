@@ -170,7 +170,7 @@ main( int argc, char *argv[ ] )
 	else
 	{
 		// each processor sends its sums back to the THEBOSS:
-		MPI_Send( PPSums, PPSize, MPI_FLOAT, THEBOSS, 0, MPI_COMM_WORLD );
+		MPI_Send( BigSums, PPSize, MPI_FLOAT, THEBOSS, 0, MPI_COMM_WORLD );
 	}
 
 	// THEBOSS receives the sums and adds them into the overall sums:
