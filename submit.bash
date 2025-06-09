@@ -4,10 +4,13 @@
 #SBATCH -p classmpitest
 #SBATCH -N 8 # number of nodes
 #SBATCH -n 8 # number of tasks
-#SBATCH -o mpiproject.out
-#SBATCH -e mpiproject.err
+#SBATCH -o proj07.out
+#SBATCH -e proj07.err
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=thonh@oregonstate.edu
+#SBATCH --mail-user=thongh@oregonstate.edu
 module load openmpi
 mpic++ proj07.cpp -o proj07 -lm
-mpiexec -mca btl self,tcp -np 4 ./proj07
+for p in 1 2 4 6 8
+do
+  mpiexec -np $4 ./proj07
+done
