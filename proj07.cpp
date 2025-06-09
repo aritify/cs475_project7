@@ -182,7 +182,7 @@ main( int argc, char *argv[ ] )
 		{
 			if( src != THEBOSS )
 			{
-				MPI_Recv( tmpSums, PPSize, MPI_FLOAT, src, 0, MPI_COMM_WORLD, &status );
+				MPI_Recv( tmpSums, MAXPERIODS, MPI_FLOAT, src, 0, MPI_COMM_WORLD, &status );
 
 				for( int p = 0; p < MAXPERIODS; p++ )
 					BigSums[p] += tmpSums[p];
