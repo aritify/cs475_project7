@@ -170,7 +170,7 @@ main( int argc, char *argv[ ] )
 	else
 	{
 		// each processor sends its sums back to the THEBOSS:
-		MPI_Send( ?????, ?????, ?????, ?????, ?????, MPI_COMM_WORLD );
+		MPI_Send( ?????, PPSize, MPI_FLOAT, THEBOSS, ?????, MPI_COMM_WORLD );
 	}
 
 	// THEBOSS receives the sums and adds them into the overall sums:
@@ -182,7 +182,7 @@ main( int argc, char *argv[ ] )
 		{
 			if( src != THEBOSS )
 			{
-				MPI_Recv( tmpSums, ?????, ?????, ?????, ?????, MPI_COMM_WORLD, &status );
+				MPI_Recv( tmpSums, PPSize, MPI_FLOAT, src, 0, MPI_COMM_WORLD, &status );
 
 				for( int p = 0; p < MAXPERIODS; p++ )
 					BigSums[p] += tmpSums[p];
